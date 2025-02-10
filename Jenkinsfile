@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOTNET_VERSION = '9.0' // Change this based on your .NET version
-        BUILD_DIR = "c:\Projects\POC\Jenkins\WebApi"
-        IIS_SITE_PATH = "C:\inetpub\wwwroot\WebAPI"
+        BUILD_DIR = "c:\\Projects\\POC\\Jenkins\\WebApi"
+        IIS_SITE_PATH = "C:\\inetpub\\wwwroot\\WebAPI"
         IIS_SERVICE = "W3SVC"
     }
 
