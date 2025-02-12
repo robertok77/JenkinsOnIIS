@@ -18,7 +18,7 @@ pipeline {
         stage('Restore Dependencies') {
             steps {
                 script {
-                    bat "dotnet restore"
+                    sh "dotnet restore"
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Build Solution') {
             steps {
                 script {
-                    bat "dotnet build --configuration Release"
+                    sh "dotnet build --configuration Release"
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
         stage('Publish Application') {
             steps {
                 script {
-                    bat "dotnet publish -c Release -o ${BUILD_DIR}"
+                    sh "dotnet publish -c Release -o ${BUILD_DIR}"
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
         stage('Deploy to IIS') {
             steps {
                 script {
-                    bat """
+                    sh """
                     powershell Stop-Service ${IIS_SERVICE} -Force
                     powershell Remove-Item -Recurse -Force ${IIS_SITE_PATH}
                     powershell Copy-Item -Recurse -Force ${BUILD_DIR}/* ${IIS_SITE_PATH}
